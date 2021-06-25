@@ -1,0 +1,26 @@
+unmanaged implementation in class zbp_sdf_i_person_u unique;
+
+define behavior for ZSDF_I_PERSON_U alias Person
+//late numbering
+etag master LastChangedAt
+lock master
+{
+
+  field ( readonly ) PersonId;
+
+  field ( mandatory ) LastName;
+
+  create;
+  update;
+  delete;
+
+  mapping for ZSDF_PERSON
+  {
+     PersonId = person_id;
+     FirstName = first_name;
+     LastName = last_name;
+     LastChangedAt = last_changed_at;
+
+  }
+
+}

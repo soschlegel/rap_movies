@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service Definition'
+define service ZSDF_SD_Movie_M {
+  expose ZSDF_C_MOVIE_M as Movies;
+  expose ZSDF_I_Categories as Category;
+  expose zsdf_I_ratings as Ratings;
+}

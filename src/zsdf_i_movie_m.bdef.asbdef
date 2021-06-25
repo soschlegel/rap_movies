@@ -1,0 +1,38 @@
+managed;
+
+define behavior for ZSDF_I_MOVIE_M alias Movie
+implementation in class ZSDF_BP_I_Movie_M unique
+persistent table zsdf_movie
+etag master LastChangedAt
+lock master
+
+{
+  //  field ( readonly ) Title;
+  field ( numbering : managed ) MovieID; // numbering:managed only supported for managed
+
+  field ( mandatory ) Category, ReleaseDate;
+
+  field ( readonly ) LastChangedAt, Rating, Watched;
+
+  create;
+  update;
+  delete;
+
+//  action ( features : instance ) markAsWatched result [1] $self;
+  action markAsWatched result [1] $self;
+  // https://blogs.sap.com/2019/10/15/a-journey-of-building-an-action-dialog-on-a-list-report-with-annotations/
+//  action ( features : instance ) rateAMovie parameter zsdf_a_rating result [1] $self;
+  action  rateAMovie parameter zsdf_a_rating result [1] $self;
+
+  mapping for ZSDF_MOVIE
+  {
+    MovieID = MOVIE_ID;
+    Title = TITLE;
+    ReleaseDate = RELEASE_DATE;
+    PersonID = person_id;
+    LastChangedAt = LAST_CHANGED_AT;
+    Rating = rating;
+    Category = category;
+  }
+
+}

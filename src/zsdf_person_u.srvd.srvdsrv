@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service definition for Person'
+define service ZSDF_PERSON_U {
+  expose ZSDF_C_PERSON_U as Person;
+}

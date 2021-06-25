@@ -1,0 +1,4 @@
+@EndUserText.label: 'Movies for Children'
+define service ZSDF_SD_Movie_M_Children {
+  expose ZSDF_C_MOVIE_M_Children as Movie;
+}

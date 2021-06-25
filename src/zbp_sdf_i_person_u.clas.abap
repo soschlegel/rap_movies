@@ -1,0 +1,5 @@
+CLASS zbp_sdf_i_person_u DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zsdf_i_person_u.
+ENDCLASS.
+
+CLASS zbp_sdf_i_person_u IMPLEMENTATION.
+ENDCLASS.

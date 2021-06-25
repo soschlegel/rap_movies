@@ -1,0 +1,90 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Movie',
+    typeNamePlural: 'Movies',
+    title: {
+      type: #STANDARD,
+      label: 'Movie',
+      value: 'Title'
+    }
+  }
+}
+annotate entity ZSDF_I_MOVIE_M with
+{
+  @UI.facet: [ {
+        id: 'idGeneralInfo',
+        type: #COLLECTION,
+        label: 'Movie',
+        position: 10
+      }, {
+        id: 'idMovieData',
+        parentId: 'idGeneralInfo',
+        type: #IDENTIFICATION_REFERENCE,
+        label: 'Movie Data',
+        position: 10
+     }, {
+        id: 'idMyData',
+        purpose: #STANDARD,
+        label: 'My Data',
+        position: 20,
+        parentId: 'idGeneralInfo',
+        type: #FIELDGROUP_REFERENCE,
+        targetQualifier: 'tqMyData'
+  } ]
+
+  @UI.lineItem: [ {
+    position: 20 ,
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 20
+  } ]
+  @UI.selectionField: [ {
+    position: 20
+  } ]
+  Title;
+
+  @UI.lineItem: [ {
+    position: 30 ,
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 30
+  } ]
+  ReleaseDate;
+
+  @UI.hidden: true
+  PersonID;
+
+  @UI.lineItem: [ {
+  position: 40
+  } ]
+  @UI.identification: [ {
+    position: 40
+  } ]
+
+  @Consumption.valueHelpDefinition: [{
+        entity: {  element: 'Category',
+                   name: 'ZSDF_I_Categories' }
+   }]
+  Category;
+
+  @UI.lineItem: [{ type: #FOR_ACTION, dataAction: 'rateAMovie', label: 'Rate!'  }]
+  //  @UI.fieldGroup: [{ qualifier: 'tqMyData' , label: 'Rating', position: 10,
+  //                     type: #FOR_ACTION, dataAction: 'rateAMovie'}]
+  @UI.identification: [ {  label: 'Rating', type: #FOR_ACTION, dataAction: 'rateAMovie'  } ]
+  @UI.fieldGroup: [{ qualifier: 'tqMyData' , label: 'Rating', position: 10 }]
+  Rating;
+
+  @UI.lineItem: [{ position: 100, label: 'Watched' },
+                 { type: #FOR_ACTION, dataAction: 'markAsWatched', label: 'Mark as watched' }]
+  @UI.identification: [ {  label: 'Mark as Watched', type: #FOR_ACTION, dataAction: 'markAsWatched'  } ]
+  @UI.fieldGroup: [{ qualifier: 'tqMyData' ,position: 20, label: 'Watched?' }]
+  Watched;
+
+
+  @UI.hidden: true
+  LastChangedAt;
+
+}
